@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sabrina Valle | Python Developer</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            background: #0d1117;
+            color: #e6edf3;
+        }
+        
+        h1 {
+            font-size: 48px;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            font-size: 20px;
+            color: #8b949e;
+            margin-bottom: 40px;
+        }
+        
+        .projects {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+            margin-top: 40px;
+        }
+        
+        .card {
+            background: #161b22;
+            border-radius: 12px;
+            padding: 24px;
+            border: 1px solid #30363d;
+        }
+        
+        .card h3 {
+            margin: 0 0 12px 0;
+            font-size: 22px;
+        }
+        
+        .card p {
+            color: #8b949e;
+            line-height: 1.5;
+            margin-bottom: 20px;
+        }
+        
+        .tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+        
+        .tech span {
+            background: #21262d;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            color: #8b949e;
+        }
+        
+        .links {
+            display: flex;
+            gap: 16px;
+        }
+        
+        .links a {
+            color: #1f6feb;
+            text-decoration: none;
+            font-size: 14px;
+        }
+        
+        hr {
+            border-color: #30363d;
+            margin: 40px 0;
+        }
+        
+        .contact {
+            text-align: center;
+            margin-top: 60px;
+        }
+        
+        .contact a {
+            color: #1f6feb;
+            text-decoration: none;
+            margin: 0 12px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Your Name</h1>
+    <div class="subtitle">Python Developer • Building AI Tools • Open to Work</div>
+    
+    <p>I build practical tools that solve real problems. Here's what I've made:</p>
+    
+    <div class="projects">
+        
+        <div class="card">
+            <h3>📊 Job Hunt Assistant</h3>
+            <p>AI-powered job tracker that analyzes which skills get interviews.</p>
+            <div class="tech">
+                <span>Flask</span><span>Hugging Face</span><span>Python</span>
+            </div>
+            <div class="links">
+                <a href="#">📦 GitHub</a>
+            </div>
+        </div>
+        
+        <div class="card">
+            <h3>🎲 AI Dungeon Master</h3>
+            <p>Text-based RPG where the AI remembers your choices.</p>
+            <div class="tech">
+                <span>Flask</span><span>AI API</span><span>JavaScript</span>
+            </div>
+            <div class="links">
+                <a href="#">📦 GitHub</a>
+            </div>
+        </div>
+        
+        <div class="card">
+            <h3>💪 Fitness AI Predictor</h3>
+            <p>ML app that predicts workout success based on daily metrics.</p>
+            <div class="tech">
+                <span>Streamlit</span><span>Scikit-learn</span><span>Pandas</span>
+            </div>
+            <div class="links">
+                <a href="#">📦 GitHub</a>
+            </div>
+        </div>
+        
+        <div class="card">
+            <h3>🤖 AI Code Humanizer</h3>
+            <p>Scans code for AI patterns and suggests human-friendly improvements.</p>
+            <div class="tech">
+                <span>Flask</span><span>Pattern Recognition</span><span>Python</span>
+            </div>
+            <div class="links">
+                <a href="#">📦 GitHub</a>
+            </div>
+        </div>
+        
+        <div class="card">
+            <h3>📝 Cover Letter Generator</h3>
+            <p>Enter job details, get a personalized cover letter in seconds.</p>
+            <div class="tech">
+                <span>Flask</span><span>Hugging Face</span><span>Python</span>
+            </div>
+            <div class="links">
+                <a href="#">📦 GitHub</a>
+            </div>
+        </div>
+        
+    </div>
+    
+    <hr>
+    
+    <div class="contact">
+        <p>📫 Connect with me</p>
+        <a href="#">GitHub</a>
+        <a href="#">LinkedIn</a>
+    </div>
+    
+    <div style="text-align: center; margin-top: 40px; color: #8b949e; font-size: 14px;">
+        Built with Python and ❤️
+    </div>
+</body>
+</html>
