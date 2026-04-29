@@ -1,172 +1,575 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sabrina Valle | Python Developer</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Space+Mono:wght@400;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
+       
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --dark-void: #0a0e27;
+            --cyber-blue: #00f0ff;
+            --neon-pink: #ff2a6d;
+            --hacker-green: #00ff41;
+            --pixel-purple: #b84cff;
+            --cyber-gray: #8892b0;
+            --light-bg: #112240;
+            
+            --font-pixel: 'Press Start 2P', cursive;
+            --font-mono: 'Space Mono', monospace;
+            --font-body: 'Inter', sans-serif;
+            
+            --pixel-shadow: 4px 4px 0px;
+            --pixel-shadow-sm: 2px 2px 0px;
+        }
+
+        
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 40px 20px;
-            background: #0d1117;
-            color: #e6edf3;
+            background: var(--dark-void);
+            color: #e6f1ff;
+            font-family: var(--font-body);
+            line-height: 1.7;
+            position: relative;
+            overflow-x: hidden;
         }
+
         
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(0, 240, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 240, 255, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        
+        h1, h2, h3, .pixel-title {
+            font-family: var(--font-pixel);
+            line-height: 1.4;
+            letter-spacing: -0.5px;
+        }
+
         h1 {
-            font-size: 48px;
-            margin-bottom: 10px;
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            color: var(--cyber-blue);
+            text-shadow: var(--pixel-shadow) var(--pixel-purple);
+            margin-bottom: 1rem;
         }
+
+        h2 {
+            font-size: 1.5rem;
+            color: var(--neon-pink);
+            margin-bottom: 2rem;
+            text-shadow: var(--pixel-shadow-sm) var(--dark-void);
+            display: inline-block;
+            border-bottom: 3px solid var(--cyber-blue);
+            padding-bottom: 0.5rem;
+        }
+
+        h3 {
+            font-family: var(--font-mono);
+            font-size: 1.3rem;
+            color: var(--hacker-green);
+            margin-bottom: 1rem;
+        }
+
+        p, li, .body-text {
+            font-family: var(--font-body);
+            color: var(--cyber-gray);
+        }
+
+        code, .mono {
+            font-family: var(--font-mono);
+            color: var(--hacker-green);
+        }
+
         
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        
+        header {
+            text-align: center;
+            padding: 3rem 1rem;
+            position: relative;
+            border-bottom: 4px solid var(--neon-pink);
+        }
+
+        .glitch-text {
+            animation: subtleGlitch 5s infinite;
+        }
+
+        @keyframes subtleGlitch {
+            0%, 90%, 100% { 
+                text-shadow: var(--pixel-shadow) var(--pixel-purple);
+                transform: translate(0);
+            }
+            92% { 
+                text-shadow: 6px 0 var(--cyber-blue), -4px 0 var(--neon-pink);
+                transform: translate(-2px, 2px);
+            }
+            94% { 
+                text-shadow: -4px 0 var(--cyber-blue), 6px 0 var(--neon-pink);
+                transform: translate(2px, -2px);
+            }
+            96% { text-shadow: var(--pixel-shadow) var(--pixel-purple); }
+        }
+
         .subtitle {
-            font-size: 20px;
-            color: #8b949e;
-            margin-bottom: 40px;
+            font-family: var(--font-mono);
+            font-size: 1.2rem;
+            color: var(--hacker-green);
+            margin-top: 0.5rem;
         }
+
+        .subtitle::before,
+        .subtitle::after {
+            content: ">";
+            color: var(--neon-pink);
+            margin: 0 0.5rem;
+        }
+
         
-        .projects {
+        nav {
+            margin: 2rem 0;
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            list-style: none;
+            flex-wrap: wrap;
+        }
+
+        .pixel-nav {
+            font-family: var(--font-mono);
+            color: var(--cyber-blue);
+            text-decoration: none;
+            padding: 0.8rem 1.5rem;
+            background: var(--light-bg);
+            border: 2px solid var(--cyber-blue);
+            box-shadow: var(--pixel-shadow-sm) var(--pixel-purple);
+            transition: all 0.2s ease;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .pixel-nav:hover {
+            background: var(--cyber-blue);
+            color: var(--dark-void);
+            transform: translate(2px, 2px);
+            box-shadow: none;
+            border-color: var(--neon-pink);
+        }
+
+      
+        .stats-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 24px;
-            margin-top: 40px;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1.5rem;
+            margin: 3rem 0;
         }
-        
-        .card {
-            background: #161b22;
-            border-radius: 12px;
-            padding: 24px;
-            border: 1px solid #30363d;
+
+        .stat-card {
+            background: rgba(17, 34, 64, 0.7);
+            backdrop-filter: blur(5px);
+            border: 2px solid var(--cyber-blue);
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: var(--pixel-shadow) var(--pixel-purple);
+            transition: transform 0.3s ease;
         }
-        
-        .card h3 {
-            margin: 0 0 12px 0;
-            font-size: 22px;
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--neon-pink);
         }
-        
-        .card p {
-            color: #8b949e;
-            line-height: 1.5;
-            margin-bottom: 20px;
+
+        .stat-number {
+            font-family: var(--font-pixel);
+            font-size: 2.5rem;
+            color: var(--neon-pink);
+            margin-bottom: 0.5rem;
         }
+
+        .stat-label {
+            font-family: var(--font-mono);
+            color: var(--cyber-gray);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+        }
+
         
-        .tech {
+        .skills-terminal {
+            background: rgba(10, 14, 39, 0.9);
+            border: 2px solid var(--hacker-green);
+            padding: 1.5rem;
+            margin: 2rem 0;
+            font-family: var(--font-mono);
+            box-shadow: inset 0 0 20px rgba(0, 255, 65, 0.1);
+        }
+
+        .terminal-prompt {
+            color: var(--hacker-green);
+            margin-bottom: 1rem;
+        }
+
+        .terminal-prompt::before {
+            content: ">";
+            color: var(--neon-pink);
+            margin-right: 0.5rem;
+        }
+
+        .skill-tags {
             display: flex;
             flex-wrap: wrap;
-            gap: 8px;
-            margin-bottom: 20px;
+            gap: 0.8rem;
         }
-        
-        .tech span {
-            background: #21262d;
-            padding: 4px 10px;
-            border-radius: 20px;
-            font-size: 12px;
-            color: #8b949e;
+
+        .skill-tag {
+            background: var(--light-bg);
+            border: 1px solid var(--cyber-blue);
+            padding: 0.4rem 1rem;
+            font-family: var(--font-mono);
+            font-size: 0.9rem;
+            color: var(--cyber-blue);
+            box-shadow: var(--pixel-shadow-sm) var(--pixel-purple);
+            transition: all 0.2s ease;
         }
+
+        .skill-tag:hover {
+            background: var(--neon-pink);
+            color: var(--dark-void);
+            border-color: var(--neon-pink);
+            transform: translate(1px, 1px);
+            box-shadow: none;
+        }
+
         
-        .links {
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .project-card {
+            background: var(--light-bg);
+            border: 2px solid var(--cyber-gray);
+            padding: 1.5rem;
+            position: relative;
+            transition: all 0.3s ease;
+            box-shadow: var(--pixel-shadow) rgba(0, 0, 0, 0.3);
+        }
+
+        .project-card:hover {
+            border-color: var(--neon-pink);
+            transform: translateY(-8px);
+            box-shadow: var(--pixel-shadow) var(--pixel-purple);
+        }
+
+        .project-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            font-family: var(--font-pixel);
+        }
+
+        .project-title {
+            font-family: var(--font-mono);
+            font-size: 1.4rem;
+            color: var(--cyber-blue);
+            margin-bottom: 0.8rem;
+            font-weight: 700;
+        }
+
+        .project-description {
+            color: var(--cyber-gray);
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+
+        .project-tech {
             display: flex;
-            gap: 16px;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
         }
-        
-        .links a {
-            color: #1f6feb;
+
+        .tech-badge {
+            background: rgba(0, 240, 255, 0.1);
+            border: 1px solid var(--cyber-blue);
+            padding: 0.2rem 0.8rem;
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--cyber-blue);
+        }
+
+        .project-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .pixel-link {
+            font-family: var(--font-mono);
+            color: var(--hacker-green);
             text-decoration: none;
-            font-size: 14px;
+            padding: 0.5rem 1rem;
+            border: 2px solid var(--hacker-green);
+            box-shadow: var(--pixel-shadow-sm) var(--pixel-purple);
+            transition: all 0.2s ease;
+            font-size: 0.9rem;
         }
-        
-        hr {
-            border-color: #30363d;
-            margin: 40px 0;
+
+        .pixel-link:hover {
+            background: var(--hacker-green);
+            color: var(--dark-void);
+            transform: translate(2px, 2px);
+            box-shadow: none;
         }
+
         
-        .contact {
+        .contact-section {
             text-align: center;
-            margin-top: 60px;
+            margin: 4rem 0;
         }
-        
-        .contact a {
-            color: #1f6feb;
+
+        .contact-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            margin: 2rem 0;
+        }
+
+        .pixel-btn {
+            font-family: var(--font-mono);
+            background: transparent;
+            color: var(--neon-pink);
+            border: 3px solid var(--neon-pink);
+            padding: 1rem 2rem;
+            font-size: 1rem;
+            font-weight: 600;
             text-decoration: none;
-            margin: 0 12px;
+            text-transform: uppercase;
+            box-shadow: var(--pixel-shadow) var(--cyber-blue);
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
+
+        .pixel-btn:hover {
+            background: var(--neon-pink);
+            color: var(--dark-void);
+            transform: translate(3px, 3px);
+            box-shadow: none;
+        }
+
+        
+        footer {
+            text-align: center;
+            padding: 2rem;
+            border-top: 4px solid var(--neon-pink);
+            margin-top: 4rem;
+            font-family: var(--font-mono);
+        }
+
+        .pixel-heart {
+            color: var(--neon-pink);
+            font-family: var(--font-pixel);
+            font-size: 1.2rem;
+        }
+
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .pixel-nav {
+                padding: 0.6rem 1rem;
+                font-size: 0.9rem;
+            }
+            
+            .stat-number {
+                font-size: 2rem;
+            }
+        }
+
+        
+        @media (prefers-reduced-motion) {
+            * {
+                animation: none !important;
+                transition: none !important;
+            }
+        }
+
+        
+        @media print {
+            body {
+                background: white;
+                color: black;
+            }
+            
+            .pixel-btn, nav, .stats-grid {
+                display: none;
+            }
         }
     </style>
 </head>
 <body>
-    <h1>Your Name</h1>
-    <div class="subtitle">Python Developer • Building AI Tools • Open to Work</div>
-    
-    <p>I build practical tools that solve real problems. Here's what I've made:</p>
-    
-    <div class="projects">
-        
-        <div class="card">
-            <h3>📊 Job Hunt Assistant</h3>
-            <p>AI-powered job tracker that analyzes which skills get interviews.</p>
-            <div class="tech">
-                <span>Flask</span><span>Hugging Face</span><span>Python</span>
+    <div class="container">
+        <header>
+            <h1 class="glitch-text">SABRINA VALLE</h1>
+            <div class="subtitle">Python & Web Developer</div>
+            <p style="margin-top: 1rem; font-family: var(--font-mono);">
+                <code>>Translating code into seamless web experiences _</code>
+            </p>
+        </header>
+
+        <nav>
+            <ul>
+                <li><a href="#about" class="pixel-nav">About</a></li>
+                <li><a href="#skills" class="pixel-nav">Skills</a></li>
+                <li><a href="#projects" class="pixel-nav">Projects</a></li>
+                <li><a href="#contact" class="pixel-nav">Contact</a></li>
+            </ul>
+        </nav>
+
+      
+
+        <section id="about">
+            <h2>> ABOUT_ME</h2>
+            <div class="skills-terminal">
+                <div class="terminal-prompt">cat about_sabrina.txt</div>
+                <p style="margin-bottom: 1rem;">I'm a Python developer with a passion for building practical tools that solve daily life issues.Studied computer science for 3 years before transitioning to self directed .</p>
+                <p>Currently focused on learning LLM applications, computer vision, and AI tools.</p>
             </div>
-            <div class="links">
-                <a href="#">📦 GitHub</a>
+        </section>
+
+        <section id="skills">
+            <h2>> TECH_STACK</h2>
+            <div class="skills-terminal">
+                <div class="terminal-prompt">python --list-skills</div>
+                <div class="skill-tags">
+                    <span class="skill-tag">Python</span>
+<span class="skill-tag">Flask</span>
+<span class="skill-tag">JavaScript</span>
+<span class="skill-tag">HTML/CSS</span>
+<span class="skill-tag">Git</span>
+<span class="skill-tag">SQLite</span>
+                </div>
             </div>
-        </div>
-        
-        <div class="card">
-            <h3>🎲 AI Dungeon Master</h3>
-            <p>Text-based RPG where the AI remembers your choices.</p>
-            <div class="tech">
-                <span>Flask</span><span>AI API</span><span>JavaScript</span>
-            </div>
-            <div class="links">
-                <a href="#">📦 GitHub</a>
-            </div>
-        </div>
-        
-        <div class="card">
-            <h3>💪 Fitness AI Predictor</h3>
-            <p>ML app that predicts workout success based on daily metrics.</p>
-            <div class="tech">
-                <span>Streamlit</span><span>Scikit-learn</span><span>Pandas</span>
-            </div>
-            <div class="links">
-                <a href="#">📦 GitHub</a>
-            </div>
-        </div>
-        
-        <div class="card">
-            <h3>🤖 AI Code Humanizer</h3>
-            <p>Scans code for AI patterns and suggests human-friendly improvements.</p>
-            <div class="tech">
-                <span>Flask</span><span>Pattern Recognition</span><span>Python</span>
-            </div>
-            <div class="links">
-                <a href="#">📦 GitHub</a>
-            </div>
-        </div>
-        
-        <div class="card">
-            <h3>📝 Cover Letter Generator</h3>
-            <p>Enter job details, get a personalized cover letter in seconds.</p>
-            <div class="tech">
-                <span>Flask</span><span>Hugging Face</span><span>Python</span>
-            </div>
-            <div class="links">
-                <a href="#">📦 GitHub</a>
-            </div>
-        </div>
-        
+        </section>
+
+        <section id="projects">
+            <h2>> FEATURED_PROJECTS</h2>
+            <div class="project-card">
+    <div class="project-icon">🎯</div>
+    <div class="project-title">Job Hunt Co-Pilot</div>
+    <div class="project-description">Track job applications, analyze responses, stay motivated.</div>
+    <div class="project-tech">
+        <span class="tech-badge">Flask</span>
+        <span class="tech-badge">Python</span>
+        <span class="tech-badge">JavaScript</span>
     </div>
-    
-    <hr>
-    
-    <div class="contact">
-        <p>📫 Connect with me</p>
-        <a href="#">GitHub</a>
-        <a href="#">LinkedIn</a>
+    <div class="project-links">
+        <a href="https://github.com/Serenity606/job_hunt_copilot">[GITHUB]</a>
+        <a href="https://job-hunt-copilot.onrender.com">[DEMO]</a>
     </div>
-    
-    <div style="text-align: center; margin-top: 40px; color: #8b949e; font-size: 14px;">
-        Built with Python and ❤️
+</div>
+
+<div class="project-card">
+    <div class="project-icon">🧪</div>
+    <div class="project-title">Chemistry Lab Assistant</div>
+    <div class="project-description">Lab management tool for tracking compounds, experiments, and reactions.</div>
+    <div class="project-tech">
+        <span class="tech-badge">Flask</span>
+        <span class="tech-badge">Python</span>
+        <span class="tech-badge">JSON</span>
     </div>
+    <div class="project-links">
+        <a href="https://github.com/Serenity606/chemistry_lab_assistant">[GITHUB]</a>
+        <a href="https://chemistry-lab-assistant-1.onrender.com">[DEMO]</a>
+    </div>
+</div>
+
+<div class="project-card">
+    <div class="project-icon">🔍</div>
+    <div class="project-title">Code Debugger</div>
+    <div class="project-description">Rule-based code analyzer. Flags syntax errors and common issues.</div>
+    <div class="project-tech">
+        <span class="tech-badge">Flask</span>
+        <span class="tech-badge">Python</span>
+        <span class="tech-badge">AST</span>
+    </div>
+    <div class="project-links">
+        <a href="https://github.com/Serenity606/debugger_tool">[GITHUB]</a>
+        <a href="https://debugger-tool.onrender.com">[DEMO]</a>
+    </div>
+
+                
+        </section>
+
+        <section id="contact" class="contact-section">
+            <h2>> CONNECT</h2>
+            <div class="skills-terminal" style="text-align: left;">
+                <div class="terminal-prompt">./contact --help</div>
+                <p>Find me: </p>
+            </div>
+            <div class="contact-buttons">
+                <a href="https://github.com/Serenity606" class="pixel-btn">[ GITHUB ]</a>
+                <a href="#" class="pixel-btn">[ LINKEDIN ]</a>
+            </div>
+            </div>
+        </section>
+
+        <footer>
+            <p>© 2026 Sabrina Valle | <span class="pixel-heart">❤</span> </p>
+            <p style="font-family: var(--font-mono); margin-top: 1rem; font-size: 0.8rem;">
+                <code>> System ready. Awaiting input_</code>
+            </p>
+        </footer>
+    </div>
+
+    <script>
+        
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Terminal cursor effect
+        console.log('%c> Portfolio loaded. Ready for deployment.', 'color: #00ff41; font-family: monospace; font-size: 14px;');
+    </script>
 </body>
 </html>
